@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QDateTime>
+#include "TemperatureSensorIF.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,12 +15,16 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(TemperatureSensorIF* tempSensor, QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void updateTemperature(QDateTime timeStamp, float temp);
 
 private:
     Ui::MainWindow *ui;
     QTimer m_timer;
+    TemperatureSensorIF* m_tempSensor;
 
 };
 #endif // MAINWINDOW_H

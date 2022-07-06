@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(TemperatureSensorIF *tempSensor, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
@@ -13,10 +13,17 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     m_timer.start(1000);
+
+    connect(tempSensor, &TemperatureSensorIF::newTemperature, this, &MainWindow::updateTemperature);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updateTemperature(QDateTime timeStamp, float temp)
+{
+    ui->tempLabel->setText(QString::number(temp)+"°C");
 }
 
