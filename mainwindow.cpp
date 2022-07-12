@@ -15,6 +15,7 @@ MainWindow::MainWindow(TemperatureSensorIF *tempSensor, QWidget *parent)
     m_timer.start(1000);
 
     connect(tempSensor, &TemperatureSensorIF::newTemperature, this, &MainWindow::updateTemperature);
+    connect(tempSensor, &TemperatureSensorIF::newTemperature, ui->historyForm, &::TemperatureHistoryForm::tempeatureUpdate);
 }
 
 MainWindow::~MainWindow()

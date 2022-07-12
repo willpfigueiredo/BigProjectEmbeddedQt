@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QDateTime>
 #include "TemperatureSensorIF.h"
+#include "TemperatureHistoryForm.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

@@ -36,6 +36,10 @@ ChartView {
             temperatureSeries.append(temperatureData.lastReading.x, temperatureData.lastReading.y);
 
             //adjust time axis
+            timeAxis.min = temperatureSeries.at(0).x
+            timeAxis.max = temperatureSeries.at(temperatureSeries.count-1).x
+
+
             if(temperatureData.lastReading.y < temperatureAxis.min){
                 temperatureAxis.min = temperatureData.lastReading.y;
             }

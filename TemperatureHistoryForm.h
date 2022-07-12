@@ -13,7 +13,7 @@ class TemperatureHistoryForm;
 class TemperatureHistoryForm : public QWidget
 {
     Q_OBJECT
-    Q_PROPERTY(QPointF lastReading READ lastReading WRITE setLastReading SIGNAL newReading);
+    Q_PROPERTY(QPointF lastReading READ lastReading WRITE setLastReading NOTIFY newReading);
 
 public:
     explicit TemperatureHistoryForm(QWidget *parent = nullptr);
