@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets sql
 
 CONFIG += c++17
 
@@ -11,14 +11,18 @@ CONFIG += c++17
 SOURCES += \
     MockTempSensor.cpp \
     TemperatureHistoryForm.cpp \
+    TemperatureReading.cpp \
     TemperatureSensorIF.cpp \
+    TemperatureStorage.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     MockTempSensor.h \
     TemperatureHistoryForm.h \
+    TemperatureReading.h \
     TemperatureSensorIF.h \
+    TemperatureStorage.h \
     mainwindow.h
 
 FORMS += \
