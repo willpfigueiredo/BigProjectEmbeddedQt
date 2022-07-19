@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="HVACControl" qt:editorversion="7.0.2" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" initial="Idle">
+    <state id="Heating">
+        <qt:editorinfo scenegeometry="76.53;153.06;16.53;103.06;120;100" geometry="76.53;153.06;-60;-50;120;100"/>
+        <transition type="external" event="TargetReached" target="Idle"/>
+    </state>
+    <state id="Idle">
+        <qt:editorinfo scenegeometry="321.65;141.69;261.65;91.69;120;100" geometry="321.65;141.69;-60;-50;120;100"/>
+        <transition type="external" event="TooCold" target="Heating">
+            <qt:editorinfo endTargetFactors="78.90;82.10"/>
+        </transition>
+        <transition type="external" event="TooHot" target="Cooling"/>
+    </state>
+    <state id="Cooling">
+        <qt:editorinfo scenegeometry="556.41;141.69;496.41;91.69;120;100" geometry="556.41;141.69;-60;-50;120;100"/>
+        <transition type="external" event="TagetReached" target="Idle">
+            <qt:editorinfo endTargetFactors="37.83;72.29"/>
+        </transition>
+    </state>
+</scxml>
