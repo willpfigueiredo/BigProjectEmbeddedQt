@@ -76,21 +76,48 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="heatingInd">
+        <property name="font">
+         <font>
+          <family>Ubuntu Condensed</family>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
         <property name="text">
          <string>Heating</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="coolingInd">
+        <property name="font">
+         <font>
+          <family>Ubuntu Condensed</family>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
         <property name="text">
          <string>Cooling</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="fanInd">
+        <property name="font">
+         <font>
+          <family>Ubuntu Condensed</family>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Panel</enum>
+        </property>
         <property name="text">
          <string>Fan</string>
         </property>
