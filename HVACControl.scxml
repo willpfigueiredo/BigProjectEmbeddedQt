@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" name="HVACControl" qt:editorversion="7.0.2" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" initial="Idle">
-    <state id="Heating">
-        <qt:editorinfo scenegeometry="76.53;153.06;16.53;103.06;120;100" geometry="76.53;153.06;-60;-50;120;100"/>
-        <transition type="external" event="TargetReached" target="Idle"/>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="HVACControl" qt:editorversion="7.0.2" initial="Idle">
+    <qt:editorinfo initialGeometry="0;0;-20;-20;40;40"/>
+    <state id="FanOn">
+        <qt:editorinfo geometry="491.57;-82.09;-60;-50;362.90;591.07" scenegeometry="491.57;-82.09;431.57;-132.09;362.90;591.07"/>
+        <state id="Wait">
+            <qt:editorinfo geometry="179.78;202.98;-61.64;-50;121.64;100" scenegeometry="671.35;120.89;609.71;70.89;121.64;100"/>
+            <transition type="external" event="DoneWaiting" target="Idle"/>
+            <onentry>
+                <send event="DoneWaiting" target="Wait" delay="30"/>
+            </onentry>
+        </state>
+        <state id="Cooling">
+            <qt:editorinfo geometry="34.47;398.41;-60;-50;120;100" scenegeometry="526.04;316.32;466.04;266.32;120;100"/>
+            <transition type="external" event="TagetReached" target="Wait"/>
+        </state>
+        <state id="Heating">
+            <qt:editorinfo geometry="35.80;102.88;-60;-50;120;100" scenegeometry="527.37;20.79;467.37;-29.21;120;100"/>
+            <transition type="external" event="TargetReached" target="Wait">
+                <qt:editorinfo endTargetFactors="45.37;10.83"/>
+            </transition>
+        </state>
     </state>
-    <state id="Idle">
-        <qt:editorinfo scenegeometry="321.65;141.69;261.65;91.69;120;100" geometry="321.65;141.69;-60;-50;120;100"/>
-        <transition type="external" event="TooCold" target="Heating">
-            <qt:editorinfo endTargetFactors="78.90;82.10"/>
-        </transition>
-        <transition type="external" event="TooHot" target="Cooling"/>
-    </state>
-    <state id="Cooling">
-        <qt:editorinfo scenegeometry="556.41;141.69;496.41;91.69;120;100" geometry="556.41;141.69;-60;-50;120;100"/>
-        <transition type="external" event="TagetReached" target="Idle">
-            <qt:editorinfo endTargetFactors="37.83;72.29"/>
-        </transition>
+    <state id="FanOff">
+        <qt:editorinfo geometry="-25.24;106.29;-60;-50;276.63;271.07" scenegeometry="-25.24;106.29;-85.24;56.29;276.63;271.07"/>
+        <state id="Idle">
+            <qt:editorinfo geometry="89.81;107.60;-60;-50;120;100" scenegeometry="63.24;302.90;3.24;252.90;120;100"/>
+            <transition type="external" event="TooCold" target="Heating">
+                <qt:editorinfo endTargetFactors="78.90;82.10"/>
+            </transition>
+            <transition type="external" event="TooHot" target="Cooling"/>
+        </state>
     </state>
 </scxml>

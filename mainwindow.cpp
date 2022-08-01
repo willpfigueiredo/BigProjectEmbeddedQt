@@ -16,6 +16,16 @@ MainWindow::MainWindow(TemperatureSensorIF *tempSensor, QWidget *parent)
 
     connect(tempSensor, &TemperatureSensorIF::newTemperature, this, &MainWindow::updateTemperature);
     connect(tempSensor, &TemperatureSensorIF::newTemperature, ui->historyForm, &::TemperatureHistoryForm::tempeatureUpdate);
+
+    m_hvacSM.connectToState("Heating", ui->heatingInd, &QLabel::setEnabled);
+    m_hvacSM.connectToState("Cooling", ui->coolingInd, &QLabel::setEnabled);
+    m_hvacSM.connectToState("FanOn", ui->fanInd, &QLabel::setEnabled);
+
+    m_hvacSM.connectToState("Heating", &m_hvacCtrl, &HVACController::setHeatingOn);
+    m_hvacSM.connectToState("Cooling", &m_hvacCtrl, &HVACController::setCoolingOn);
+    m_hvacSM.connectToState("FanOn", &m_hvacCtrl, &HVACController::setFanOn);
+
+    m_hvacSM.start();
 }
 
 MainWindow::~MainWindow()

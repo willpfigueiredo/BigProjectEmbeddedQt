@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets sql scxml
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets sql scxml virtualkeyboard
 
 CONFIG += c++17
 
@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    HVACController.cpp \
     MockTempSensor.cpp \
     TemperatureHistoryForm.cpp \
     TemperatureReading.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    HVACController.h \
     MockTempSensor.h \
     TemperatureHistoryForm.h \
     TemperatureReading.h \
@@ -39,3 +41,5 @@ RESOURCES += \
 
 STATECHARTS += \
     HVACControl.scxml
+
+DISTFILES +=
